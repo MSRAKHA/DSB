@@ -19,7 +19,7 @@ st.set_page_config(
 def create_breadcrumb():
     pages = {
         "Birthday Wishes": "🎂 Birthday",
-        "School Memories": "🏫 School Memories",
+        "Memories": "🏫 Memories",
         "Our Fights": "⚡ Our Fights",
         "Friendship Moments": "💖 Friendship",
         "Home": "🏠 Home"
@@ -117,7 +117,7 @@ if current_page == 'Home':
     for quote in quotes:
         st.markdown(f"<p class='quote'>{quote}</p>", unsafe_allow_html=True)
 
-elif current_page == 'School Memories':
+elif current_page == 'Memories':
     st.markdown("<h1 class='title'>🏫 School Days</h1>", unsafe_allow_html=True)
     
     memories = [
