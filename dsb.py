@@ -7,6 +7,8 @@ from datetime import datetime
 # Initialize session state
 if 'current_page' not in st.session_state:
     st.session_state.current_page = 'Home'
+if 'wishes' not in st.session_state:  # Add this line for wishes
+    st.session_state.wishes = []
 
 # Page configuration
 st.set_page_config(
@@ -87,9 +89,155 @@ st.markdown("""
         background-color: #ff6b8b;
         color: white;
     }
+    .countdown {
+        text-align: center;
+        font-size: 24px;
+        color: #ff4b6e;
+        padding: 15px;
+        background: rgba(255, 75, 110, 0.1);
+        border-radius: 10px;
+        margin: 20px 0;
+        animation: pulse 2s infinite;
+    }
+    .wish-card {
+        background-color: #fff0f3;
+        padding: 15px;
+        border-radius: 8px;
+        margin: 10px 0;
+        border-left: 4px solid #ff4b6e;
+        animation: slideIn 0.5s ease-out;
+    }
+    @keyframes pulse {
+        0% { transform: scale(1); }
+        50% { transform: scale(1.05); }
+        100% { transform: scale(1); }
+    }
+    @keyframes slideIn {
+        from { transform: translateX(-20px); opacity: 0; }
+        to { transform: translateX(0); opacity: 1; }
+    }
+    .age-calculator {
+        background: linear-gradient(135deg, #ff4b6e15, #ff4b6e30);
+        padding: 20px;
+        border-radius: 15px;
+        text-align: center;
+        margin: 20px 0;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        animation: fadeIn 1s ease-in;
+    }
+    .age-title {
+        font-size: 24px;
+        color: #ff4b6e;
+        margin-bottom: 10px;
+        font-weight: bold;
+    }
+    .age-number {
+        font-size: 36px;
+        color: #ff4b6e;
+        font-family: 'Courier New', monospace;
+        margin: 10px 0;
+        font-weight: bold;
+        animation: pulse 2s infinite;
+    }
+    .age-label {
+        font-size: 18px;
+        color: #ff4b6e;
+    }
+    @keyframes fadeIn {
+        from { opacity: 0; transform: translateY(-20px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+    .age-calculator {
+        
+            text-align: center;
+        font-size: 24px;
+        color: #ff4b6e;
+        padding: 15px;
+        background: rgba(255, 75, 110, 0.1);
+        border-radius: 10px;
+        margin: 20px 0;
+        animation: pulse 2s infinite;
+    }
+    .age-title {
+        font-size: 24px;
+        color: #ff4b6e;
+        margin-bottom:18px;
+        font-weight: bold;
+    }
+    .age-number {
+        font-size: 36px;
+        color: #ff4b6e;
+        font-family: 'Courier New', monospace;
+        margin: 10px 0;
+        font-weight: bold;
+        animation: pulse 2s infinite;
+    }
+    .age-label {
+        font-size: 18px;
+        color: #ff4b6e;
+    }
+    @keyframes fadeIn {
+        from { opacity: 0; transform: translateY(-20px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
     </style>
     """, unsafe_allow_html=True)
+# Add these two new functions here
+def countdown_timer():
+    today = datetime.now()
+    birthday = datetime(today.year, 12, 29)
+    if today > birthday:
+        birthday = datetime(today.year + 1, 12, 29)
+    delta = birthday - today
+    st.markdown(f"""
+        <div class='countdown'>
+            🎉 {delta.days} days until the next birthday! 🎉
+        </div>
+    """, unsafe_allow_html=True)
+def calculate_age():
+    # Birth date - December 29, 2000 (adjust the year as needed)
+    birth_date = datetime(2000, 12, 29)
+    today = datetime.now()
+    
+    # Calculate age with decimal points
+    age_timedelta = today - birth_date
+    age_years = age_timedelta.days / 365.25
+    
+    st.markdown(f"""
+         <div class='age-calculator'>
+            Current Age {age_years:.8f} years old 
+            
+        </div>
+    """, unsafe_allow_html=True)
 
+def add_wishes():
+    st.markdown("<h3 style='text-align: center;'>✨ Leave a Birthday Wish ✨</h3>", unsafe_allow_html=True)
+    with st.form("wish_form"):
+        col1, col2 = st.columns([2, 1])
+        with col1:
+            wish = st.text_area("Your Message", placeholder="Write your birthday wish here...")
+        with col2:
+            name = st.text_input("Your Name", placeholder="Enter your name")
+        
+        submit_wish = st.form_submit_button("Send Wish 🎁")
+        if submit_wish and wish and name:
+            st.session_state.wishes.append({
+                "name": name,
+                "message": wish,
+                "timestamp": datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+            })
+            st.success("Thank you for your wish! 🎉")
+
+    if st.session_state.wishes:
+        st.markdown("<h3 style='text-align: center;'>💝 Birthday Wishes 💝</h3>", unsafe_allow_html=True)
+        for wish in reversed(st.session_state.wishes):
+            st.markdown(f"""
+                <div class='wish-card'>
+                    <p><strong>{wish['name']}</strong> says:</p>
+                    <p>{wish['message']}</p>
+                    <small>{wish['timestamp']}</small>
+                </div>
+            """, unsafe_allow_html=True)
 # Get current page
 current_page = create_breadcrumb()
 
@@ -99,6 +247,14 @@ if current_page == 'Home':
     #rainbow 
     st.title("**:rainbow[Dr. Dhamam Soni Bhavani! From MS Rakha (Sofware Engineer)]**")
     
+     # Create two columns for countdown and age calculator
+    col1, col2 = st.columns(2)
+    
+    with col1:
+        countdown_timer()
+    
+    with col2:
+        calculate_age()
     st.balloons()
     time.sleep(1)
     st.snow()
@@ -251,7 +407,9 @@ elif current_page == 'Birthday Wishes':
 
     with col8 :
         st.image("images/fig.png", caption="Fights")
+    
     st.video("images/video.mp4")
+    add_wishes()
 
 
 # Footer
