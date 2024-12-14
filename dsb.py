@@ -226,17 +226,17 @@ elif current_page == 'Birthday Wishes':
     st.write("Here are some photos from our school days and graduation.")
     col1, col2, col3 ,col4  = st.columns([1,1,1 ,1])
     with col1:
-        st.image("images/eiffeltower.png", caption="School Days", use_column_width=True)
+        st.image("images/eiffeltower.png", caption="School Days", use_container_width =True)
     
 
     with col4:
-        st.image("images/docter.png", caption="Dr. Soni Bhavani Graduation " ,use_column_width=True)
+        st.image("images/docter.png", caption="Dr. Soni Bhavani Graduation " ,use_container_width =True)
 
     with col3:
-        st.image("images/life.png", caption="Docter's Life", use_column_width=True)
+        st.image("images/life.png", caption="Docter's Life", use_container_width =True)
 
     with col2 :
-        st.image("images/anchor.png", caption="Our School Farewell Achoring", use_column_width=True)
+        st.image("images/anchor.png", caption="Our School Farewell Achoring", use_container_width =True)
 
     col5, col6, col7 ,col8  = st.columns([1,1,1 ,1])
     with col5:
