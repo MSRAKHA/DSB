@@ -121,8 +121,100 @@ st.markdown("""
         background-color: #ff6b8b;
         color: white;
     }
+    .countdown {
+        text-align: center;
+        font-size: 24px;
+        color: #ff4b6e;
+        padding: 15px;
+        background: rgba(255, 75, 110, 0.1);
+        border-radius: 10px;
+        margin: 20px 0;
+        animation: pulse 2s infinite;
+    }
+    .wish-card {
+        background-color: #fff0f3;
+        padding: 15px;
+        border-radius: 8px;
+        margin: 10px 0;
+        border-left: 4px solid #ff4b6e;
+        animation: slideIn 0.5s ease-out;
+    }
+    @keyframes pulse {
+        0% { transform: scale(1); }
+        50% { transform: scale(1.05); }
+        100% { transform: scale(1); }
+    }
+    @keyframes slideIn {
+        from { transform: translateX(-20px); opacity: 0; }
+        to { transform: translateX(0); opacity: 1; }
+    }
+    .age-calculator {
+        background: linear-gradient(135deg, #ff4b6e15, #ff4b6e30);
+        padding: 20px;
+        border-radius: 15px;
+        text-align: center;
+        margin: 20px 0;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        animation: fadeIn 1s ease-in;
+    }
+    .age-title {
+        font-size: 24px;
+        color: #ff4b6e;
+        margin-bottom: 10px;
+        font-weight: bold;
+    }
+    .age-number {
+        font-size: 36px;
+        color: #ff4b6e;
+        font-family: 'Courier New', monospace;
+        margin: 10px 0;
+        font-weight: bold;
+        animation: pulse 2s infinite;
+    }
+    .age-label {
+        font-size: 18px;
+        color: #ff4b6e;
+    }
+    @keyframes fadeIn {
+        from { opacity: 0; transform: translateY(-20px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+    .age-calculator {
+        
+            text-align: center;
+        font-size: 24px;
+        color: #ff4b6e;
+        padding: 15px;
+        background: rgba(255, 75, 110, 0.1);
+        border-radius: 10px;
+        margin: 20px 0;
+        animation: pulse 2s infinite;
+    }
+    .age-title {
+        font-size: 24px;
+        color: #ff4b6e;
+        margin-bottom:18px;
+        font-weight: bold;
+    }
+    .age-number {
+        font-size: 36px;
+        color: #ff4b6e;
+        font-family: 'Courier New', monospace;
+        margin: 10px 0;
+        font-weight: bold;
+        animation: pulse 2s infinite;
+    }
+    .age-label {
+        font-size: 18px;
+        color: #ff4b6e;
+    }
+    @keyframes fadeIn {
+        from { opacity: 0; transform: translateY(-20px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
     </style>
     """, unsafe_allow_html=True)
+<<<<<<< HEAD
 # Add this CSS to your existing styles
 st.markdown("""
     <style>
@@ -163,6 +255,22 @@ st.markdown("""
 """, unsafe_allow_html=True)
 def calculate_age():
     # Birth date - December 29, 1998 (adjust the year as needed)
+=======
+# Add these two new functions here
+def countdown_timer():
+    today = datetime.now()
+    birthday = datetime(today.year, 12, 29)
+    if today > birthday:
+        birthday = datetime(today.year + 1, 12, 29)
+    delta = birthday - today
+    st.markdown(f"""
+        <div class='countdown'>
+            🎉 {delta.days} days until the next birthday! 🎉
+        </div>
+    """, unsafe_allow_html=True)
+def calculate_age():
+    # Birth date - December 29, 2000 (adjust the year as needed)
+>>>>>>> 7b60d64218d1d2a9cb04e662cf442222382aa0aa
     birth_date = datetime(2000, 12, 29)
     today = datetime.now()
     
@@ -171,12 +279,17 @@ def calculate_age():
     age_years = age_timedelta.days / 365.25
     
     st.markdown(f"""
+<<<<<<< HEAD
         <div class='age-calculator'>
+=======
+         <div class='age-calculator'>
+>>>>>>> 7b60d64218d1d2a9cb04e662cf442222382aa0aa
             Current Age {age_years:.8f} years old 
             
         </div>
     """, unsafe_allow_html=True)
 
+<<<<<<< HEAD
 
 # Add these two new functions here
 def countdown_timer():
@@ -245,6 +358,8 @@ def create_birthday_card():
     """, unsafe_allow_html=True)
   
 
+=======
+>>>>>>> 7b60d64218d1d2a9cb04e662cf442222382aa0aa
 def add_wishes():
     st.markdown("<h3 style='text-align: center;'>✨ Leave a Birthday Wish ✨</h3>", unsafe_allow_html=True)
     with st.form("wish_form"):
@@ -291,6 +406,14 @@ if current_page == 'Home':
     with col2:
         calculate_age()
     
+     # Create two columns for countdown and age calculator
+    col1, col2 = st.columns(2)
+    
+    with col1:
+        countdown_timer()
+    
+    with col2:
+        calculate_age()
     st.balloons()
     time.sleep(1)
     st.snow()
@@ -308,8 +431,12 @@ if current_page == 'Home':
 
     for quote in quotes:
         st.markdown(f"<p class='quote'>{quote}</p>", unsafe_allow_html=True)
+<<<<<<< HEAD
     virtual_gift()
     create_birthday_card()
+=======
+
+>>>>>>> 7b60d64218d1d2a9cb04e662cf442222382aa0aa
 elif current_page == 'Memories':
     st.markdown("<h1 class='title'>🏫 School Days</h1>", unsafe_allow_html=True)
     
@@ -428,6 +555,7 @@ elif current_page == 'Birthday Wishes':
     st.write("Here are some photos from our school days and graduation.")
     col1, col2, col3 ,col4  = st.columns([1,1,1 ,1])
     with col1:
+<<<<<<< HEAD
         st.image("images/eiffeltower.png", caption="School Days", use_container_width  =True)
     
 
@@ -439,6 +567,19 @@ elif current_page == 'Birthday Wishes':
 
     with col2 :
         st.image("images/anchor.png", caption="Our School Farewell Achoring", use_container_width  =True)
+=======
+        st.image("images/eiffeltower.png", caption="School Days", use_container_width =True)
+    
+
+    with col4:
+        st.image("images/docter.png", caption="Dr. Soni Bhavani Graduation " ,use_container_width =True)
+
+    with col3:
+        st.image("images/life.png", caption="Docter's Life", use_container_width =True)
+
+    with col2 :
+        st.image("images/anchor.png", caption="Our School Farewell Achoring", use_container_width =True)
+>>>>>>> 7b60d64218d1d2a9cb04e662cf442222382aa0aa
 
     col5, col6, col7 ,col8  = st.columns([1,1,1 ,1])
     with col5:
@@ -453,10 +594,17 @@ elif current_page == 'Birthday Wishes':
 
     with col8 :
         st.image("images/fig.png", caption="Fights")
+<<<<<<< HEAD
    
     st.video("images/video.mp4")
     add_wishes()
     
+=======
+    
+    st.video("images/video.mp4")
+    add_wishes()
+
+>>>>>>> 7b60d64218d1d2a9cb04e662cf442222382aa0aa
 
 # Footer
 st.markdown("""
