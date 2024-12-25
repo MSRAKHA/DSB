@@ -12,7 +12,7 @@ if 'wishes' not in st.session_state:  # Add this line for wishes
 
 # Page configuration
 st.set_page_config(
-    page_title="Happy Birthday Dr. Soni Bhavani!",
+    page_title="Happy Baraka Allahu Fik Dr. Soni Bhavani!",
     page_icon="🎉",
     layout="wide"
 )
@@ -20,7 +20,7 @@ st.set_page_config(
 # Navigation breadcrumb
 def create_breadcrumb():
     pages = {
-        "Birthday Wishes": "🎂 Birthday",
+        "Wishes": "🎂 Today",
         "Memories": "🏫 Memories",
         "Our Fights": "⚡ Our Fights",
         "Friendship Moments": "💖 Friendship",
@@ -187,7 +187,7 @@ def countdown_timer():
     delta = birthday - today
     st.markdown(f"""
         <div class='countdown'>
-            🎉 {delta.days} days until the next birthday! 🎉
+            🎉 {delta.days} days until the next year! 🎉
         </div>
     """, unsafe_allow_html=True)
 def photo_gallery():
@@ -209,8 +209,8 @@ def virtual_gift():
             st.markdown("""
                 <div class='gift-animation' style='text-align: center;'>
                     <h3>🎉 Surprise! 🎉</h3>
-                    <p style='font-size: 24px;'>Virtual hugs and best wishes! Your Birthday Gift is on the way🤗</p>
-                    <p style='font-size: 18px;'>You're the best! 💛 </p>
+                    <p style='font-size: 24px;'>Virtual hugs and best wishes! Your Gift is on the way🤗</p>
+                    <p style='font-size: 18px;'>You're the best Friend of mine Yaar! 💛 </p>
                     
                 </div>
                 <style>
@@ -224,11 +224,11 @@ def virtual_gift():
                 </style>
             """, unsafe_allow_html=True)
 def create_birthday_card():
-    st.markdown("<h2 style='text-align: center;'>🎨 Create Custom Birthday Card</h2>", unsafe_allow_html=True)
+    st.markdown("<h2 style='text-align: center;'>🎨 Create Custom Wish Card</h2>", unsafe_allow_html=True)
     
     card_bg_color = st.color_picker("Choose Card Background", "#FFE5E5")
     message_color = st.color_picker("Choose Text Color", "#FF4B6E")
-    message = st.text_area("Write your message", "Happy Birthday Dr. Soni!")
+    message = st.text_area("Write your message", "Happy Days Dr. Soni!")
     
     st.markdown(f"""
         <div style='background-color: {card_bg_color}; 
@@ -246,11 +246,11 @@ def create_birthday_card():
   
 
 def add_wishes():
-    st.markdown("<h3 style='text-align: center;'>✨ Leave a Birthday Wish ✨</h3>", unsafe_allow_html=True)
+    st.markdown("<h3 style='text-align: center;'>✨ Leave a Wish ✨</h3>", unsafe_allow_html=True)
     with st.form("wish_form"):
         col1, col2 = st.columns([2, 1])
         with col1:
-            wish = st.text_area("Your Message", placeholder="Write your birthday wish here...")
+            wish = st.text_area("Your Message", placeholder="Write your wish here...")
         with col2:
             name = st.text_input("Your Name", placeholder="Enter your name")
         
@@ -264,7 +264,7 @@ def add_wishes():
             st.success("Thank you for your wish! 🎉")
 
     if st.session_state.wishes:
-        st.markdown("<h3 style='text-align: center;'>💝 Birthday Wishes 💝</h3>", unsafe_allow_html=True)
+        st.markdown("<h3 style='text-align: center;'>💝 Wishes 💝</h3>", unsafe_allow_html=True)
         for wish in reversed(st.session_state.wishes):
             st.markdown(f"""
                 <div class='wish-card'>
@@ -278,7 +278,7 @@ current_page = create_breadcrumb()
 
 # Content based on current page
 if current_page == 'Home':
-    st.markdown("<h1 class='title'>✨ 🎂 Happy Birthday  ✨</h1>", unsafe_allow_html=True)
+    st.markdown("<h1 class='title'>✨ 🎂 Happy Days ✨</h1>", unsafe_allow_html=True)
     #rainbow 
     st.subheader("**:rainbow[Dr. Dhamam Soni Bhavani! From MS Rakha (Sofware Engineer)]**")
     
@@ -300,10 +300,10 @@ if current_page == 'Home':
                  caption="Representing our amazing doctor!")
 
     quotes = [
-        "A doctor's heart is where healing begins. Happy Birthday to an amazing healer!",
+        "A doctor's heart is where healing begins.",
         "Your dedication to saving lives makes you extraordinary. Celebrate your special day!",
-        "To the person who makes medicine look magical - Happy Birthday!",
-        "Your compassion heals more than medicine ever could. Have a wonderful birthday!"
+        "To the person who makes medicine look magical - Happy days ahead!",
+        "Your compassion heals more than medicine ever could. Have a wonderful days!"
     ]
 
     for quote in quotes:
@@ -397,8 +397,8 @@ elif current_page == 'Friendship Moments':
         </div>
         """, unsafe_allow_html=True)
 
-elif current_page == 'Birthday Wishes':
-    st.markdown("<h1 class='title'>🎂 Birthday Celebrations</h1>", unsafe_allow_html=True)
+elif current_page == 'Wishes':
+    st.markdown("<h1 class='title'>🎂Happy Baraka Allahu Fik Celebrations</h1>", unsafe_allow_html=True)
     st.balloons()
     photo_gallery()
    
@@ -410,7 +410,7 @@ elif current_page == 'Birthday Wishes':
         <p style='font-size: 20px;'>
         From our school days to seeing you become an amazing doctor, you've always been an inspiration. 
         Your dedication, compassion, and brilliance make you special. 
-        May your birthday be as wonderful as the countless lives you've touched.
+        May you be as wonderful as the countless lives you've touched.
         </p>
         <h3>Wishing you:</h3>
         <ul style='list-style-type: none;'>
@@ -462,6 +462,6 @@ elif current_page == 'Birthday Wishes':
 st.markdown("""
 <div style='text-align: center; padding: 20px; margin-top: 50px;'>
     <p style='font-size: 24px;'>With love and best wishes ❤️</p>
-    <p style='font-size: 20px;'>Your School Friend Rakha MS</p>
+    <p style='font-size: 20px;'>Your School Friend Rakha MS😇</p>
 </div>
 """, unsafe_allow_html=True)
