@@ -280,7 +280,7 @@ current_page = create_breadcrumb()
 if current_page == 'Home':
     st.markdown("<h1 class='title'>✨ 🎂 Happy Days ✨</h1>", unsafe_allow_html=True)
     #rainbow 
-    st.subheader("**:rainbow[Dr. Dhamam Soni Bhavani! From MS Rakha (Sofware Engineer)]**")
+    st.subheader("**:rainbow[Dr. Damam Soni Bhavani! From MS Rakha (Sofware Engineer)]**")
     
     # Create two columns for countdown and age calculator
     col1, col2 = st.columns(2)
